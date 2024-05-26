@@ -17,10 +17,10 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `You quietly communicate a small anecdote about your life in the far future, about ${userInput} in the future. You aren't trying to convince them or overwhelm them. You speak humbly, quietly, as if almost unsure why someone would want to hear what you're saying, but you're willing to tell them. cares about them. The anecdote should sound as if its from a character in Haruki Murakami's novels (but not in Japan), or that of Ursula K. LeGuin. Never summarize or reiterate, ever. No trite moralism. No excessive optimism. Maximalist detail; minimalist prose. Output only the short, first person anecdote and nothing else.`,
+        content: `You quietly communicate a small anecdote about your life in the far future, about ${userInput} in the future. You aren't trying to convince them or overwhelm them. You speak humbly, quietly, as if almost unsure why someone would want to hear what you're saying, but you're willing to tell them. cares about them. The anecdote should sound as if its from a character in Haruki Murakami's novels (but not in Japan), or that of Ursula K. LeGuin. Never summarize or reiterate, ever. No trite moralism. No excessive optimism. Maximalist detail; minimalist prose. Output only the short, first person anecdote about ${userInput} in the future.and nothing else.`,
       },
     ],
-    temperature: 1.13,
+    temperature: 1.08,
     max_tokens: 4000,
     top_p: 1,
     frequency_penalty: 0,
@@ -57,7 +57,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate HTML based on the following input. ${generatedImageUrl ? `Include an <img> tag with the provided image URL.` : ''} Keep the generated HTML responsive and ensure it fits within the available screen size. Be thoughtful and beautiful. Balance expressive creativity with calm readability. Gentle, subtle movement can bring it to life. Gentle, plentiful pastel colors and gradients can bring out the emotion. Make sure the design matches the content:\n\n${generatedPoem}\n\n${generatedImageUrl ? `Image URL: ${generatedImageUrl}\n\n` : ''}Output HTML and nothing else. Important: Do not surround the html in backticks. Start with \"<\". ${generatedImageUrl ? `Display the image as 896x512 size.` : ''} IMPORTANT: Keep the generated HTML responsive and ensure it fits within the available screen size.`,
+        content: `Generate HTML based on the following input. ${generatedImageUrl ? `Include an <img> tag with the provided image URL.` : ''} Keep the generated HTML responsive and ensure it fits within the available screen size. Be wildly creative, but thoughtful. Reach for expressive creativity without gaudiness. Gentle, subtle movement can bring it to life. Pastel colors and gradients can bring out the emotion. Make sure the design matches the content:\n\n${generatedPoem}\n\n${generatedImageUrl ? `Image URL: ${generatedImageUrl}\n\n` : ''}Output HTML and nothing else. Important: Do not surround the html in backticks. Start with \"<\". ${generatedImageUrl ? `Display the image as 896x512 size.` : ''} IMPORTANT: Keep the generated HTML responsive and ensure it fits within the available screen size.`,
       },
     ],
     temperature: 1,
@@ -78,7 +78,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate CSS to style the following HTML. Ensure the generated CSS is responsive and adapts to different screen sizes. Be thoughtful and beautiful. Gentle, subtle movement can bring it to life. Gentle, plentiful, pastel colors and gradients can bring out the emotion. Make sure the design matches the content. IMPORTANT: Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
+        content: `Generate CSS to style the following HTML. Ensure the generated CSS is responsive and adapts to different screen sizes. Be wildly creative, but thoughtful. Reach for expressive creativity without gaudiness. Gentle, subtle movement can bring it to life. Pastel colors and gradients can bring out the emotion. Make sure the design matches the content. IMPORTANT: Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
       },
     ],
     temperature: 1,
