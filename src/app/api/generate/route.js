@@ -56,7 +56,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate HTML based on the following input. ${generatedImageUrl ? `Include an <img> tag with the provided image URL.` : ''} Keep the generated HTML responsive and ensure it fits within the available screen size. Be wildly creative. Reach for expressive creativity without gaudiness. Gentle, subtle movement can bring it to life. Pastel colors and gradients can bring out the emotion. Make sure the design matches the content:\n\n${generatedPoem}\n\n${generatedImageUrl ? `Image URL: ${generatedImageUrl}\n\n` : ''}Output HTML and nothing else. Important: Do not surround the html in backticks. Start with \"<\". ${generatedImageUrl ? `Display the image as 896x512 size.` : ''} IMPORTANT: Keep the generated HTML responsive and ensure it fits within the available screen size.`,
+        content: `Generate HTML based on the following input. ${generatedImageUrl ? `Include an <img> tag with the provided image URL.` : ''} Keep the generated HTML responsive and ensure it fits within the available screen size. Be wildly creative. Movement can bring it to life. Pastel colors and gradients can bring out the emotion. Make sure the design matches the content:\n\n${generatedPoem}\n\n${generatedImageUrl ? `Image URL: ${generatedImageUrl}\n\n` : ''}Output HTML and nothing else. Important: Do not surround the html in backticks. Start with \"<\". ${generatedImageUrl ? `Display the image as 896x512 size.` : ''} IMPORTANT: Keep the generated HTML responsive and ensure it fits within the available screen size.`,
       },
     ],
     temperature: 1,
