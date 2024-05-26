@@ -27,7 +27,7 @@ export async function POST(request) {
     presence_penalty: 0,
   });
   console.log('done with story');
-  const generatedPoem = 'a simple drawing in the style of a detailed and intricate illustration style, reminiscent of engravings or etchings from the 19th century.' + poemResponse.choices[0].message.content.trim() + 'a simple drawing in the style of a detailed and intricate illustration style, reminiscent of engravings or etchings from the 19th century. Rich with texture and a pastel palette that enhances the vintage feel. Precise linework and shading. No text';
+  const generatedPoem = 'a simple drawing in the style of a detailed and intricate illustration style, reminiscent of engravings or etchings from the 19th century.' + poemResponse.choices[0].message.content.trim() + 'a simple drawing in the style of a detailed and intricate illustration style, reminiscent of engravings or etchings from the 19th century. Rich with texture and a pastel almost-sepia palette that enhances the vintage feel. Precise linework and shading.';
 
   // Generate image based on the generated poem
   let generatedImageUrl = '';
@@ -56,7 +56,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate HTML based on the following input. ${generatedImageUrl ? `Include an <img> tag with the provided image URL.` : ''} Keep the generated HTML responsive and ensure it fits within the available screen size. Be incredibly creative and wild. Use movement and feeling and color to bring the story to life. Make sure the design matches the content:\n\n${generatedPoem}\n\n${generatedImageUrl ? `Image URL: ${generatedImageUrl}\n\n` : ''}Output HTML and nothing else. Important: Do not surround the html in backticks. Start with \"<\". ${generatedImageUrl ? `Display the image as 896x512 size.` : ''} IMPORTANT: Keep the generated HTML responsive and ensure it fits within the available screen size.`,
+        content: `Generate HTML based on the following input. ${generatedImageUrl ? `Include an <img> tag with the provided image URL.` : ''} Keep the generated HTML responsive and ensure it fits within the available screen size. Be incredibly creative and wild. Use movement and feeling and color to bring the story to life. Make sure the design matches the content:\n\n${generatedPoem}\n\n${generatedImageUrl ? `Image URL: ${generatedImageUrl}\n\n` : ''}Output HTML and nothing else. Important: Do not surround the html in backticks. Start with \"<\". ${generatedImageUrl ? `Display the image as 672x384 size.` : ''} IMPORTANT: Keep the generated HTML responsive and ensure it fits within the available screen size.`,
       },
     ],
     temperature: 1,

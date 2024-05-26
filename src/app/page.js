@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-2xl font-bold mb-6 text-center">Infinite Future</h1>
+      <h1 className="text-4xl font-bold mb-6 text-center">Infinite Future</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="userInput" className="block mb-2">What do you want to hear about?</label>
