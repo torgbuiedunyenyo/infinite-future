@@ -77,7 +77,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate CSS to style the following HTML. Ensure the generated CSS is responsive and adapts to different screen sizes. Be incredibly creative and wild. Use movement and feeling and color to bring the story to life. Ensure the design matches the content. IMPORTANT: Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
+        content: `Generate CSS to style the following HTML. Ensure the generated CSS is responsive and adapts to different screen sizes. Be incredibly creative and wild. Use movement and feeling and color to bring the story to life. Ensure the design matches the content. Ensure text is readable. IMPORTANT: Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
       },
     ],
     temperature: 1,
