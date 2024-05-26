@@ -27,7 +27,7 @@ export async function POST(request) {
     presence_penalty: 0,
   });
   console.log('done with story');
-  const generatedPoem = 'a simple drawing in the style of a detailed and intricate illustration style, reminiscent of engravings or etchings from the 19th century.' + poemResponse.choices[0].message.content.trim() + 'a simple drawing in the style of a detailed and intricate illustration style, reminiscent of engravings or etchings from the 19th century. Rich with texture and a monochromoatic sepia-tone palette that enhances the vintage feel. Precise linework and shading.';
+  const generatedPoem = 'a simple drawing in the style of a detailed and intricate illustration style, reminiscent of engravings or etchings from the 19th century.' + poemResponse.choices[0].message.content.trim() + 'a simple drawing in the style of a detailed and intricate illustration style, reminiscent of engravings or etchings from the 19th century. Rich with texture and a sepia-tone palette that enhances the vintage feel. Precise linework and shading. No text';
 
   // Generate image based on the generated poem
   let generatedImageUrl = '';
@@ -36,7 +36,6 @@ export async function POST(request) {
       model: "dall-e-3",
       prompt: generatedPoem,
       quality: 'hd',
-      style: 'natural',
       n: 1,
       size: "1792x1024",
     });
