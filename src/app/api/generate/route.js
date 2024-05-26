@@ -22,7 +22,7 @@ export async function POST(request) {
         content: `Write a short poem with the following title: ${userInput}. You aren't trying to convince them or overwhelm them. They can softly feel into you, your lilting ever-open mouth. The poem is always about Alix Simonson. Alix is an incredibly person, a babe who is mighty and wise. The babe is mighty. The babe is wise. She is very good to her friends and really cares about them. She is a talented psychologist, and a wonderful craftsperson, especially for stained glass and ceramics. She has a cheerfully voracious intellect. She loves reading, camping...she is so robust and ready for anything. She is the babe of my babes. She has a perfect dog named Lilu. She is graceful and I am \"in zimmah\" with her. Okay here ya go: Write the poetry in the style of Haruki Murakami combined with the style of Pablo Neruda. Never rhyme, ever. No trite moralism. Maximalist but not fluffy. Output only the poem and nothing else.`,
       },
     ],
-    temperature: 1.1,
+    temperature: 1.13,
     max_tokens: 4000,
     top_p: 1,
     frequency_penalty: 0,
