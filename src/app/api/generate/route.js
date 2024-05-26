@@ -1,5 +1,3 @@
-// /Users/ratpartyserver/git/infinite-zimmah/src/app/api/generate/route.js
-
 import { OpenAI } from 'openai';
 
 export async function POST(request) {
@@ -15,11 +13,11 @@ export async function POST(request) {
     messages: [
       {
         role: 'system',
-        content: 'You are a poet wandering slowly through what it means to be in zimmah with Alix Simonson. Not that everything you write needs to always be abou that or something.',
+        content: 'Wandering through the future, you see things, things that sometimes need to be spoken of back to those of the past -- whispered in the ears of the young, or the immortal (I\'m not really sure which, is there a difference?). The wilds of time do reach across many topics of life, the everyday, the street-level emotional experience of being a human that continues on and on and on with no end in sight, though the struggle does not lessen. But perhaps it also does not increase.',
       },
       {
         role: 'user',
-        content: `Write a short poem with the following title: ${userInput}. You aren't trying to convince them or overwhelm them. They can softly feel into you, your lilting ever-open mouth. The poem is always about Alix Simonson. Alix is an incredibly person, a babe who is mighty and wise. The babe is mighty. The babe is wise. She is very good to her friends and really cares about them. She is a talented psychologist, and a wonderful craftsperson, especially for stained glass and ceramics. She has a cheerfully voracious intellect. She loves reading, camping...she is so robust and ready for anything. She is the babe of my babes. She has a perfect dog named Lilu. She is graceful and I am \"in zimmah\" with her. Okay here ya go: Write the poetry in the style of Haruki Murakami combined with the style of Pablo Neruda. Never rhyme, ever. No trite moralism. Maximalist but not fluffy. Output only the poem and nothing else.`,
+        content: `You quietly communicate a small anecdote about your life in the far future, about ${userInput} in the future. You aren't trying to convince them or overwhelm them. You speak humbly, quietly, as if almost unsure why someone would want to hear what you're saying, but you're willing to tell them. cares about them. The anecdote should sound as if its from a character in Haruki Murakami's novels (but not in Japan), or that of Ursula K. LeGuin. Never summarize or reiterate, ever. No trite moralism. No excessive optimism. Maximalist detail; minimalist prose. Output only the short, first person anecdote and nothing else.`,
       },
     ],
     temperature: 1.13,
@@ -28,10 +26,28 @@ export async function POST(request) {
     frequency_penalty: 0,
     presence_penalty: 0,
   });
+  console.log('done with story');
+  const generatedPoem = 'a simple drawing in the style of a detailed and intricate illustration style, reminiscent of engravings or etchings from the 19th century.' + poemResponse.choices[0].message.content.trim() + 'a simple drawing in the style of a detailed and intricate illustration style, reminiscent of engravings or etchings from the 19th century. Rich with texture and a monochromoatic sepia-tone palette that enhances the vintage feel. Precise linework and shading.';
 
-  const generatedPoem = poemResponse.choices[0].message.content.trim();
+  // Generate image based on the generated poem
+  let generatedImageUrl = '';
+  try {
+    const imageResponse = await openai.images.generate({
+      model: "dall-e-3",
+      prompt: generatedPoem,
+      quality: 'hd',
+      style: 'natural',
+      n: 1,
+      size: "1792x1024",
+    });
+    console.log('done with image');
+    generatedImageUrl = imageResponse.data[0].url;
+  } catch (error) {
+    console.error('Error generating image:', error);
+    // Proceed without the image URL
+  }
 
-  // Generate HTML based on the generated poem
+  // Generate HTML based on the generated poem and image URL (if available)
   const htmlResponse = await openai.chat.completions.create({
     model: 'gpt-4o',
     messages: [
@@ -41,7 +57,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate HTML based on the following input. Be incredibly creative and wild. Bring the poem to life with verve and spirit:\n\n${generatedPoem}\n\nOutput HTML and nothing else. Do not use any <img> tags. Important: Do not surround the html in backticks. Start with \"<\". Keep the generated HTML responsive and ensure it fits within the available screen size.`,
+        content: `Generate HTML based on the following input. ${generatedImageUrl ? `Include an <img> tag with the provided image URL.` : ''} Keep the generated HTML responsive and ensure it fits within the available screen size. Be thoughtful and beautiful. Balance expressive creativity with calm readability. Gentle, subtle movement can bring it to life. Gentle, plentiful pastel colors and gradients can bring out the emotion. Make sure the design matches the content:\n\n${generatedPoem}\n\n${generatedImageUrl ? `Image URL: ${generatedImageUrl}\n\n` : ''}Output HTML and nothing else. Important: Do not surround the html in backticks. Start with \"<\". ${generatedImageUrl ? `Display the image as 896x512 size.` : ''} IMPORTANT: Keep the generated HTML responsive and ensure it fits within the available screen size.`,
       },
     ],
     temperature: 1,
@@ -50,6 +66,7 @@ export async function POST(request) {
     frequency_penalty: 0,
     presence_penalty: 0,
   });
+  console.log('done with HTML');
 
   // Generate CSS based on the generated HTML
   const cssResponse = await openai.chat.completions.create({
@@ -57,11 +74,11 @@ export async function POST(request) {
     messages: [
       {
         role: 'system',
-        content: 'You are a CSS generator.',
+        content: 'You are a CSS generator. You have Tailwind CSS, Bulma, and bootstrap CSS optionally available for use.',
       },
       {
         role: 'user',
-        content: `Generate CSS to style the following HTML. Be incredibly creative and wild. Bring the poem to life with verve and spirit. Use movement and feeling. Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
+        content: `Generate CSS to style the following HTML. Ensure the generated CSS is responsive and adapts to different screen sizes. Be thoughtful and beautiful. Gentle, subtle movement can bring it to life. Gentle, plentiful, pastel colors and gradients can bring out the emotion. Make sure the design matches the content. IMPORTANT: Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
       },
     ],
     temperature: 1,
@@ -73,6 +90,7 @@ export async function POST(request) {
 
   const generatedHtml = htmlResponse.choices[0].message.content.trim();
   const generatedCss = cssResponse.choices[0].message.content.trim();
+  console.log('done with CSS');
 
   return new Response(JSON.stringify({ html: generatedHtml, css: generatedCss }), {
     headers: { 'Content-Type': 'application/json' },

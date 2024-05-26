@@ -1,5 +1,3 @@
-// /Users/ratpartyserver/git/infinite-zimmah/src/app/page.js
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -25,7 +23,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setCountdown(50);
+    setCountdown(110);
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -39,10 +37,10 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-2xl font-bold mb-6 text-center">Infinite Zimmah</h1>
+      <h1 className="text-2xl font-bold mb-6 text-center">Infinite Future</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="userInput" className="block mb-2">Whatever you want: </label>
+          <label htmlFor="userInput" className="block mb-2">What do you want to hear about?</label>
           <input
             type="text"
             id="userInput"
@@ -58,7 +56,7 @@ export default function Home() {
             className="w-full px-3 py-4 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:outline-none"
             disabled={isLoading}
           >
-            {isLoading ? 'Zimming...' : 'More zimmah please!'}
+            {isLoading ? 'Remembering...' : 'Tell me about the future...'}
           </button>
         </div>
       </form>

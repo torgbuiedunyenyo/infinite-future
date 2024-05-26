@@ -1,3 +1,5 @@
+// /Users/ratpartyserver/git/infinite-zimmah/vercel.json
+
 {
     "functions": {
       "src/app/api/generate/route.js": {

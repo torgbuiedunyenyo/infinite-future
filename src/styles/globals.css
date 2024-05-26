@@ -1,3 +1,7 @@
+/* /Users/ratpartyserver/git/infinite-zimmah/src/styles/globals.css */
+@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bulma/css/bulma.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
