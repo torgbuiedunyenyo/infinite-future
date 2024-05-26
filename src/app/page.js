@@ -1,3 +1,5 @@
+// /Users/ratpartyserver/git/infinite-zimmah/src/app/page.js
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -51,8 +53,6 @@ export default function Home() {
           />
         </div>
         <div>
-        <break />
-        <break />
           <button
             type="submit"
             className="w-full px-3 py-4 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:outline-none"
@@ -67,7 +67,7 @@ export default function Home() {
           <p>Loading... I promise it&apos;ll be worth it: {countdown} seconds remaining</p>
         </div>
       ) : (
-        <div className="mt-8">
+        <div className="mt-8 overflow-auto max-h-screen">
           <HtmlDisplay html={generatedHtml} css={generatedCss} />
         </div>
       )}

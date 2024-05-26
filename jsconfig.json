@@ -1,3 +1,5 @@
+// /Users/ratpartyserver/git/infinite-zimmah/jsconfig.json
+
 {
   "compilerOptions": {
     "target": "es5",

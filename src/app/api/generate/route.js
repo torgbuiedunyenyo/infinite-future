@@ -1,3 +1,5 @@
+// /Users/ratpartyserver/git/infinite-zimmah/src/app/api/generate/route.js
+
 import { OpenAI } from 'openai';
 
 export async function POST(request) {
@@ -39,7 +41,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate HTML based on the following input. Be incredibly creative and wild. Bring the poem to life with verve and spirit:\n\n${generatedPoem}\n\nOutput HTML and nothing else. Do not use any <img> tags. Important: Do not surround the html in backticks. Start with \"<\"`,
+        content: `Generate HTML based on the following input. Be incredibly creative and wild. Bring the poem to life with verve and spirit:\n\n${generatedPoem}\n\nOutput HTML and nothing else. Do not use any <img> tags. Important: Do not surround the html in backticks. Start with \"<\". Keep the generated HTML responsive and ensure it fits within the available screen size.`,
       },
     ],
     temperature: 1,
@@ -59,7 +61,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate CSS to style the following HTML. Be incredibly creative and wild. Bring the poem to life with verve and spirit. Use movement and feeling:\n\n${htmlResponse.choices[0].message.content}`,
+        content: `Generate CSS to style the following HTML. Be incredibly creative and wild. Bring the poem to life with verve and spirit. Use movement and feeling. Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
       },
     ],
     temperature: 1,

@@ -1,3 +1,5 @@
+// /Users/ratpartyserver/git/infinite-zimmah/.eslintrc.json
+
 {
   "extends": "next/core-web-vitals"
 }

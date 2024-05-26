@@ -1,3 +1,5 @@
+// /Users/ratpartyserver/git/infinite-zimmah/tailwind.config.js
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
