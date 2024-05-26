@@ -77,7 +77,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate CSS to style the following HTML. Ensure the generated CSS is responsive and adapts to different screen sizes. Be wildly creative. Reach for expressive creativity. Gentle, subtle movement can bring it to life. Pastel colors and gradients can bring out the emotion. Make sure the design matches the content. IMPORTANT: Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
+        content: `Generate CSS to style the following HTML. Ensure the generated CSS is responsive and adapts to different screen sizes. Be wildly, creative and expressive and unique. Gentle movement can bring it to life. Pastel colors and gradients bring out the emotion. Ensure the design matches the content. IMPORTANT: Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
       },
     ],
     temperature: 1,
