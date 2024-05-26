@@ -56,7 +56,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate HTML based on the following input. ${generatedImageUrl ? `Include an <img> tag with the provided image URL.` : ''} Keep the generated HTML responsive and ensure it fits within the available screen size. Be creative and wild. Pastel colors and gradients can bring out the emotion. Make sure the design matches the content:\n\n${generatedPoem}\n\n${generatedImageUrl ? `Image URL: ${generatedImageUrl}\n\n` : ''}Output HTML and nothing else. Important: Do not surround the html in backticks. Start with \"<\". ${generatedImageUrl ? `Display the image as 896x512 size.` : ''} IMPORTANT: Keep the generated HTML responsive and ensure it fits within the available screen size.`,
+        content: `Generate HTML based on the following input. ${generatedImageUrl ? `Include an <img> tag with the provided image URL.` : ''} Keep the generated HTML responsive and ensure it fits within the available screen size. Be incredibly creative and wild. Use movement and feeling and color to bring the story to life. Make sure the design matches the content:\n\n${generatedPoem}\n\n${generatedImageUrl ? `Image URL: ${generatedImageUrl}\n\n` : ''}Output HTML and nothing else. Important: Do not surround the html in backticks. Start with \"<\". ${generatedImageUrl ? `Display the image as 896x512 size.` : ''} IMPORTANT: Keep the generated HTML responsive and ensure it fits within the available screen size.`,
       },
     ],
     temperature: 1,
@@ -77,7 +77,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate CSS to style the following HTML. Ensure the generated CSS is responsive and adapts to different screen sizes. Be creative and wild, expressive and unique. Gentle movement can bring it to life. Pastel colors and gradients bring out the emotion. Ensure the design matches the content. IMPORTANT: Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
+        content: `Generate CSS to style the following HTML. Ensure the generated CSS is responsive and adapts to different screen sizes. Be incredibly creative and wild. Use movement and feeling and color to bring the story to life. Ensure the design matches the content. IMPORTANT: Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
       },
     ],
     temperature: 1,
