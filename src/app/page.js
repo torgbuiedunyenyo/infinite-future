@@ -64,11 +64,11 @@ export default function Home() {
         <div className="mt-6 text-center">
           <p>Loading... I promise it&apos;ll be worth it: {countdown} seconds remaining</p>
         </div>
-      ) : (
+      ) : generatedHtml? (
         <div className="mt-8 overflow-auto max-h-screen">
           <HtmlDisplay html={generatedHtml} css={generatedCss} />
         </div>
-      )}
+      ):null}
     </div>
   );
 }
