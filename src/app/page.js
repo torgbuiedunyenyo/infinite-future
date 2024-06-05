@@ -39,8 +39,9 @@ export default function Home() {
   };
 
   return (
-    <main className='min-h-screen'>
-      <div className="container mx-auto px-4 mt-5">
+    
+    <main className='flex flex-col min-h-screen'>
+      <div className="container mx-auto px-4 mt-5 flex-grow">
      <Title/>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -69,15 +70,15 @@ export default function Home() {
           <p>Loading... I promise it&apos;ll be worth it: {countdown} seconds remaining</p>
         </div>
       ) : generatedHtml? (
-        <div className="mt-8 overflow-auto max-h-screen">
+        <div className="mt-8 ">
           <HtmlDisplay html={generatedHtml} css={generatedCss} />
         </div>
       ):null}
 
      
     </div>
-
-    <Footer/>
+<Footer/>
+ 
     </main>
   
   );

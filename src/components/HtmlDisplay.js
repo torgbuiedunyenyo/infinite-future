@@ -4,7 +4,7 @@ export default function HtmlDisplay({ html, css }) {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <div dangerouslySetInnerHTML={{ __html: html }} className="overflow-auto" />
+      <div dangerouslySetInnerHTML={{ __html: html }}  />
     </>
   );
 }
