@@ -56,7 +56,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate HTML based on the following input. ${generatedImageUrl ? `Include an <img> tag with the provided image URL.` : ''} Keep the generated HTML responsive and ensure it fits within the available screen size. Be incredibly creative and wild. Use movement and feeling and color to bring the story to life. Make sure the design matches the content:\n\n${generatedPoem}\n\n${generatedImageUrl ? `Image URL: ${generatedImageUrl}\n\n` : ''}Output HTML and nothing else. Important: Do not surround the html in backticks. Start with \"<\". ${generatedImageUrl ? `Display the image as 672x384 size.` : ''} IMPORTANT: Keep the generated HTML responsive and ensure it fits within the available screen size.`,
+        content: `Generate HTML based on the following input. ${generatedImageUrl ? `Include an <img> tag with the provided image URL.` : ''} Ensure the generated HTML is responsive and fits within the available screen size without causing horizontal scrolling. Be incredibly creative and wild. Use movement and feeling and color to bring the story to life. Make sure the design matches the content:\n\n${generatedPoem}\n\n${generatedImageUrl ? `Image URL: ${generatedImageUrl}\n\n` : ''}Output HTML and nothing else. Important: Do not surround the html in backticks. Start with \"<\". ${generatedImageUrl ? `Display the image responsively, adjusting its size based on the screen size.` : ''} IMPORTANT: Keep the generated HTML responsive, ensure it fits within the viewport, and avoid horizontal scrolling. Use appropriate sizing units and techniques to achieve responsiveness.`,
       },
     ],
     temperature: 1,
@@ -77,7 +77,7 @@ export async function POST(request) {
       },
       {
         role: 'user',
-        content: `Generate CSS to style the following HTML. Ensure the generated CSS is responsive and adapts to different screen sizes. Be incredibly creative and wild. Use movement and feeling and color to bring the story to life. Ensure the design matches the content. Ensure text is readable. IMPORTANT: Ensure the generated CSS is responsive and adapts to different screen sizes:\n\n${htmlResponse.choices[0].message.content}`,
+        content: `Generate CSS to style the following HTML. Ensure the generated CSS is responsive and adapts to different screen sizes. Be incredibly creative and wild. Use movement and feeling and color to bring the story to life. Ensure the design matches the content. Ensure text is readable. IMPORTANT: Use responsive design principles and techniques to make the content adapt to different screen sizes. Avoid fixed sizes that may cause content to overflow or become inaccessible on smaller screens. Prioritize a mobile-first approach and use appropriate CSS techniques, such as media queries and relative units (e.g., percentages, viewport units), to adjust styles for larger screens as needed. Ensure the content remains within the viewport without requiring horizontal scrolling:\n\n${htmlResponse.choices[0].message.content}`,
       },
     ],
     temperature: 1,

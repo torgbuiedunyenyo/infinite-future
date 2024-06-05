@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import HtmlDisplay from '@/components/HtmlDisplay';
+import Footer from '@/components/Footer';
+import Title from '@/components/Title';
+
 
 export default function Home() {
   const [userInput, setUserInput] = useState('');
@@ -23,7 +26,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setCountdown(75);
+    setCountdown(85);
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -36,8 +39,10 @@ export default function Home() {
   };
 
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-4xl font-bold mb-6 text-center">Infinite Future</h1>
+    
+    <main className='flex flex-col min-h-screen'>
+      <div className="container mx-auto px-4 mt-5 flex-grow">
+     <Title/>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="userInput" className="block mb-2">What do you want to hear about?</label>
@@ -64,11 +69,17 @@ export default function Home() {
         <div className="mt-6 text-center">
           <p>Loading... I promise it&apos;ll be worth it: {countdown} seconds remaining</p>
         </div>
-      ) : (
-        <div className="mt-8 overflow-auto max-h-screen">
+      ) : generatedHtml? (
+        <div className="mt-8 ">
           <HtmlDisplay html={generatedHtml} css={generatedCss} />
         </div>
-      )}
+      ):null}
+
+     
     </div>
+<Footer/>
+ 
+    </main>
+  
   );
 }
