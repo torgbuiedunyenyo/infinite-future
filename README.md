@@ -1,26 +1,11 @@
-# My Project
+# Infinite Future
 
-This is a Next.js project that takes user input, sends it to an LLM for generation, and displays the generated HTML code on the page.
+This is an experiment in generative UI. It generates an image, text, and then all of the HTLM and CSS for the website as well.
+
+I guarantee none of the code, it is a quickly-made demo, and a lot of the code is AI-generated. Use it however you want, at your own risk.
+
+For the record, what I most proud of isn't actually the generative UI, it is that I think my text prompt actually gets the AI "smell" out of the writing.
 
 ## Features
 
-- Next.js (deployed on Vercel)
-- Tailwind CSS
-- ESLint
-- App Router
-- Anthropic API for LLM generation
-
-## Getting Started
-
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Set up your Anthropic API key in the `.env` file
-4. Run the development server: `npm run dev`
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Built on Next.js, so if for some crazy reason you want to deploy your own version of this, Vercel is probably a good option.
